@@ -1,0 +1,137 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+  }
+  
+  body {
+    font-family: 'Roboto', sans-serif;
+    background-color: #f9fafb;
+    color: #333;
+  }
+  
+  .homepage-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 20px;
+    height: 100vh;
+    justify-content: center;
+  }
+  
+  .header {
+    text-align: center;
+    margin-bottom: 40px;
+  }
+  
+  .header h1 {
+    font-size: 36px;
+    font-weight: 700;
+    color: #4a58f1;
+    margin-bottom: 10px;
+  }
+  
+  .header p {
+    font-size: 18px;
+    color: #666;
+  }
+  
+  .search-container {
+    background: #fff;
+    padding: 30px;
+    border-radius: 8px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    width: 100%;
+    max-width: 500px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 20px;
+  }
+  
+  .search-container input {
+    width: 100%;
+    padding: 12px;
+    border-radius: 8px;
+    border: 1px solid #ddd;
+    font-size: 16px;
+    margin: 5px 0;
+  }
+  
+  .search-container button {
+    padding: 12px 20px;
+    background-color: #4a58f1;
+    color: white;
+    font-size: 16px;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+  }
+  
+  .search-container button:hover {
+    background-color: #6f7dff;
+  }
+  
+  .loading {
+    font-size: 18px;
+    color: #4a58f1;
+    font-weight: bold;
+  }
+  
+  .error {
+    color: red;
+    font-size: 16px;
+    margin-top: 10px;
+    font-weight: 600;
+  }
+  
+  .results-container {
+    width: 100%;
+    max-width: 600px;
+    margin-top: 30px;
+    padding: 20px;
+    background-color: #fff;
+    border-radius: 8px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  }
+  
+  .results-container h2 {
+    font-size: 24px;
+    color: #4a58f1;
+    margin-bottom: 15px;
+    font-weight: bold;
+  }
+  
+  .results-container ul {
+    list-style: none;
+    padding: 0;
+  }
+  
+  .results-container li {
+    background-color: #f4f7fc;
+    margin: 10px 0;
+    padding: 12px;
+    border-radius: 6px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-size: 16px;
+    font-weight: 500;
+  }
+  
+  .results-container li span {
+    font-weight: 700;
+    color: #4a58f1;
+  }
+  
+  .results-container li:hover {
+    background-color: #e9efff;
+    cursor: pointer;
+  }
+  
+  .results-container p {
+    text-align: center;
+    color: #888;
+    font-size: 16px;
+  }
