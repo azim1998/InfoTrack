@@ -22,16 +22,6 @@ A lightweight web application that checks where a given URL appears in Google's 
    ```bash
    dotnet run
    ```
-
-4. Ensure CORS is configured (in `Program.cs` or `Startup.cs`):
-
-   ```csharp
-   app.UseCors(x => x
-       .AllowAnyOrigin()
-       .AllowAnyMethod()
-       .AllowAnyHeader());
-   ```
-
 ---
 
 # Frontend Setup
