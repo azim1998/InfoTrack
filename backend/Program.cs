@@ -1,3 +1,5 @@
+using InfoTrack.Parsers;
+using InfoTrack.Parsers.Interfaces;
 using InfoTrack.Services;
 using InfoTrack.Services.Interfaces;
 
@@ -10,6 +12,7 @@ builder.Services.AddControllers();
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 
+builder.Services.AddScoped<IHtmlParser, GoogleHtmlParser>();
 builder.Services.AddScoped<ISearchService, SearchService>();
 builder.Services.AddHttpClient<ISearchService, SearchService>();
 

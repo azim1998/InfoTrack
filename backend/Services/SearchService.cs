@@ -1,16 +1,17 @@
 ﻿using InfoTrack.Models;
+using InfoTrack.Parsers.Interfaces;
 using InfoTrack.Services.Interfaces;
-using System.Text.RegularExpressions;
 
 namespace InfoTrack.Services
 {
     public class SearchService : ISearchService
     {
         private readonly HttpClient _httpClient;
-        private string regexPattern = @"<a[^>]*>.*?</a>";
-        public SearchService(HttpClient httpClient)
+        private readonly IHtmlParser _htmlParser;
+        public SearchService(HttpClient httpClient, IHtmlParser htmlParser)
         {
             _httpClient = httpClient;
+            _htmlParser = htmlParser;
         }
 
         public async Task<SearchResult?> GetSearchResultAsync(SearchRequst searchRequest)
@@ -18,32 +19,14 @@ namespace InfoTrack.Services
             try
             {
                 var escapedKeyword = Uri.EscapeDataString(searchRequest.Keyword);
-                var url = $"https://www.google.co.uk/search?num=100&q={escapedKeyword}";
+                var searchUrl = $"https://www.google.co.uk/search?num=100&q={escapedKeyword}";
 
-                var resultHtml = await _httpClient.GetStringAsync(url);
-                var target = searchRequest.TargetUrl;
+                var resultHtml = await _httpClient.GetStringAsync(searchUrl);
+                var targetUrl = searchRequest.TargetUrl;
 
-                var matches = Regex.Matches(resultHtml, regexPattern, RegexOptions.IgnoreCase);
+                var positions = _htmlParser.ExtractPositions(resultHtml, targetUrl);
 
-                var result = new SearchResult();
-
-                var position = 1;
-                foreach (Match match in matches)
-                {
-                    if (match.Value.Contains(target, StringComparison.OrdinalIgnoreCase))
-                    {
-                        result.Positions.Add(position);
-                    }
-
-                    position++;
-                }
-
-                if (!result.Positions.Any())
-                {
-                    result.Positions.Add(0);
-                }
-
-                return result;
+                return new SearchResult { Positions = positions };
             }
             catch (Exception ex)
             {
