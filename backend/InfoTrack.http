@@ -1,0 +1,6 @@
+@InfoTrack_HostAddress = http://localhost:5180
+
+GET {{InfoTrack_HostAddress}}/weatherforecast/
+Accept: application/json
+
+###
